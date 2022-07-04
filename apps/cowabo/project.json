@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/cowabo",
         "index": "apps/cowabo/src/index.html",
@@ -13,8 +15,13 @@
         "polyfills": "apps/cowabo/src/polyfills.ts",
         "tsConfig": "apps/cowabo/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/cowabo/src/favicon.ico", "apps/cowabo/src/assets"],
-        "styles": ["apps/cowabo/src/styles.scss"],
+        "assets": [
+          "apps/cowabo/src/favicon.ico",
+          "apps/cowabo/src/assets"
+        ],
+        "styles": [
+          "apps/cowabo/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -71,15 +78,51 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/cowabo/**/*.ts", "apps/cowabo/**/*.html"]
+        "lintFilePatterns": [
+          "apps/cowabo/**/*.ts",
+          "apps/cowabo/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/cowabo"],
+      "outputs": [
+        "coverage/apps/cowabo"
+      ],
       "options": {
         "jestConfig": "apps/cowabo/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/cowabo/.storybook",
+        "browserTarget": "cowabo:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputDir": "dist/storybook/cowabo",
+        "configDir": "apps/cowabo/.storybook",
+        "browserTarget": "cowabo:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
       }
     }
   },

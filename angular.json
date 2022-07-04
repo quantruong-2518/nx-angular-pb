@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "cowabo": "apps/cowabo",
-    "cowabo-e2e": "apps/cowabo-e2e"
+    "cowabo-e2e": "apps/cowabo-e2e",
+    "header": "libs/header",
+    "header-e2e": "apps/header-e2e"
   }
 }
